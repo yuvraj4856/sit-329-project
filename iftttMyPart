@@ -1,0 +1,14 @@
+def send_ifttt_alert(api_key, message):
+    event_name = 'Send_data'  # Replace with the event name you set in IFTTT
+
+    url = 'https://maker.ifttt.com/trigger/Send_data/json/with/key/b-F4U7NhssgKf42FkeqKxdSLYC5zTdTa31AS46cxJ8D'
+    payload = {'value1': message}  # Use the 'message' parameter
+
+    headers = {'Content-Type': 'application/json'}
+
+    response = requests.post(url, json=payload, headers=headers)
+
+    if response.status_code == 200:
+        print('Message sent successfully.')
+    else:
+        print(f'Error sending message. Status code: {response.status_code}')
